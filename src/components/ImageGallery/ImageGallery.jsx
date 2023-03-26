@@ -5,9 +5,14 @@ import Loader from 'components/Loader/Loader';
 import Button from 'components/Button/Button';
 import getImages from 'API/GetImgs';
 import css from './ImageGallery.module.css'; 
+import PropTypes from 'prop-types';
 
 
 export default class ImageGallery extends Component {
+    static propTypes = {
+        imageName: PropTypes.string.isRequired,
+    };
+
     state = {
         images: [],
         loading: false,

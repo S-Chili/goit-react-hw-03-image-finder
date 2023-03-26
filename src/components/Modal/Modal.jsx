@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './Modal.module.css';
+import PropTypes from 'prop-types';
 
 const Modal = ({ onClose, children }) => (
   <div className={css.overlay} onClick={onClose}>
@@ -9,3 +10,8 @@ const Modal = ({ onClose, children }) => (
   </div>
 );
 export default Modal;
+
+Modal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+};
