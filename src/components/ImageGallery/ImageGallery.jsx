@@ -33,11 +33,17 @@ export default class ImageGallery extends Component {
 
     loadImages = async (searchTerm) => {
         const { page } = this.state;
-        const images = await getImages(searchTerm, page);
-        this.setState((prevState) => ({
-            images: [...prevState.images, ...images],
-            loading: false,
-        }));
+        try {
+            const images = await getImages(searchTerm, page);
+            this.setState((prevState) => ({
+                images: [...prevState.images, ...images],
+                loading: false,
+                error: false,
+            }));
+        } catch (error) {
+            console.error(error);
+            this.setState({ loading: false, error: true });
+        }
     };
 
   loadMoreImages = () => {
